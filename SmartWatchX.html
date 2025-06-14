@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartWatch X</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base styles */
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.6rem;
+            margin-bottom: 0.8rem;
+            color: #0f62fe;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        img:hover {
+            transform: scale(1.05);
+        }
+        
+        button,
+        select {
+            padding: 10px 18px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            margin: 8px 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+        
+        button:focus,
+        select:focus {
+            outline: 2px solid #0f62fe;
+        }
+        
+        button {
+            background-color: #0f62fe;
+            color: white;
+        }
+        
+        button:hover {
+            background-color: #0043ce;
+        }
+        
+        select {
+            background-color: #f0f0f0;
+        }
+        
+        #message {
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            button,
+            select {
+                width: 100%;
+                margin: 8px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section>
+            <h1>SmartWatch X</h1>
+
+            <img src="https://zerolifestyle.co/cdn/shop/files/Luna-_1_6.webp?v=1734558268&width=700" alt="SmartWatch X product image" />
+
+            <p><strong>SmartWatch X</strong> blends fashion and functionality. Track your health, manage your day, and stay connected — all from your wrist.</p>
+
+            <button id="buyButton" role="button" aria-label="Buy SmartWatch X">Buy Now</button>
+
+            <div>
+                <select id="themeSelect" aria-label="Select Theme">
+          <option value="white">Light Mode</option>
+          <option value="#1e1e1e">Dark Mode</option>
+          <option value="#e3f2fd">Sky Blue</option>
+        </select>
+                <button onclick="changeTheme()">Apply Theme</button>
+            </div>
+
+            <div id="message" aria-live="polite"></div>
+        </section>
+
+        <footer>
+            &copy; 2025 SmartWatch X | Designed by Muniza
+        </footer>
+    </main>
+
+    <script>
+        // Simulate order and show message
+        document.getElementById("buyButton").addEventListener("click", () => {
+            const message = document.getElementById("message");
+            message.innerText = "Processing your order...";
+            setTimeout(() => {
+                message.innerText = "Order placed! SmartWatch X will be delivered soon.";
+            }, 1500);
+        });
+
+        // Change theme dynamically
+        function changeTheme() {
+            const selected = document.getElementById("themeSelect").value;
+            document.body.style.backgroundColor = selected;
+            document.body.style.color = selected === "#1e1e1e" ? "#f5f5f5" : "#1a1a1a";
+
+            let name = "Light";
+            if (selected === "#1e1e1e") name = "Dark";
+            else if (selected === "#e3f2fd") name = "Sky Blue";
+
+            document.getElementById("message").innerText = `Theme changed to ${name} Mode.`;
+        }
+    </script>
+</body>
+
+</html>
